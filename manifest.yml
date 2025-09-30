@@ -1,0 +1,36 @@
+# format_version: 3.5.0
+name: libvirt
+title: Libvirt/KVM
+version: 0.0.1
+source:
+  license: "Elastic-2.0"
+description: >
+  Collects Libvirt/KVM metrics from prometheus-libvirt-exporter.
+type: integration
+categories: ["monitoring", "virtualization"]
+conditions:
+  kibana:
+    version: "^8.17.0"
+  elastic:
+    subscription: "basic"
+icons:
+  - src: /img/libvirt-logo.svg
+    title: Sample logo
+    size: 32x32
+    type: image/svg+xml
+policy_templates:
+  - name: libvirt
+    title: Libvirt Metrics
+    description: Scrapes Prometheus metrics from libvirt_exporter.
+    inputs:
+      - type: prometheus/metrics
+        title: Prometheus Endpoint
+        description: Endpoint exposing libvirt metrics.
+# screenshots:
+#   - src: /img/sample-screenshot.png
+#     title: Sample screenshot
+#     size: 600x600
+#     type: image/png
+owner:
+  github: elastic/integrations
+  type: community

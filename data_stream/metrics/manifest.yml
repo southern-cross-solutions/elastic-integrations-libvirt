@@ -1,0 +1,18 @@
+title: Libvirt Prometheus Metrics
+type: metrics
+streams:
+  - input: prometheus/metrics
+    title: Libvirt metrics
+    template_path: stream.yml.hbs
+    vars:
+      - name: hosts
+        type: text
+        multi: true
+        required: true
+        title: Prometheus endpoints
+        default:
+          - http://localhost:9177/metrics
+      - name: period
+        type: text
+        default: 60s
+        title: Collection interval

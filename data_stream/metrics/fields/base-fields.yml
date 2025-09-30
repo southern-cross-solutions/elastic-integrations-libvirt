@@ -1,0 +1,18 @@
+- name: '@timestamp'
+  type: date
+  description: Event timestamp.
+- name: libvirt
+  type: group
+  fields:
+    - name: domains_total
+      type: long
+      description: Total number of VMs
+    - name: domains_running
+      type: long
+      description: Number of running VMs
+    - name: domains_paused
+      type: long
+      description: Number of paused VMs
+    - name: domains_shutoff
+      type: long
+      description: Number of shutoff VMs
