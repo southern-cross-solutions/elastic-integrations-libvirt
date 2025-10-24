@@ -1,0 +1,54 @@
+- name: data_stream.type
+  type: constant_keyword
+  description: Data stream type.
+- name: data_stream.dataset
+  type: constant_keyword
+  description: Data stream dataset.
+- name: data_stream.namespace
+  type: constant_keyword
+  description: Data stream namespace.
+- name: '@timestamp'
+  type: date
+  description: Event timestamp.
+- name: libvirt
+  type: group
+  description: >
+    Libvirt virtualization metrics.
+
+  fields:
+    - name: domain
+      type: group
+      description: >
+        Metrics and state related to a single domain (VM).
+
+      fields:
+        - name: name
+          type: keyword
+          description: >
+            The human-readable name of the domain (VM).
+
+          dimension: true
+          multi_fields:
+            - type: text
+              name: text
+        - name: uuid
+          type: keyword
+          description: >
+            The unique identifier (UUID) of the domain.
+
+          dimension: true
+          multi_fields:
+            - type: text
+              name: text
+        - name: state
+          type: keyword
+          description: >
+            The current execution state of the domain (e.g., running, shutoff, paused).
+
+          multi_fields:
+            - type: text
+              name: text
+        - name: id
+          type: long
+          description: >-
+            The transient domain ID assigned by the hypervisor.
