@@ -1,0 +1,28 @@
+title: Libvirt Domain Metrics
+type: metrics
+dataset: libvirt.metrics
+
+streams:
+  - input: httpjson
+    title: Libvirt Domain Metrics Stream
+    description: Polls the libvirt-exporter API and collects JSON metrics.
+    vars:
+      - name: host
+        type: text
+        title: API Host
+        default: "localhost"
+      - name: port
+        type: text
+        title: API Port
+        default: "8088"
+      - name: path
+        type: text
+        title: API Endpoint Path
+        default: "/v1/domains"
+      - name: interval
+        type: text
+        title: Polling Interval
+        default: "10s"
+
+elasticsearch:
+  index_mode: time_series

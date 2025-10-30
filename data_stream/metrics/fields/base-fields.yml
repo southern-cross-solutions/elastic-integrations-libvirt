@@ -1,0 +1,33 @@
+- name: data_stream.type
+  type: constant_keyword
+
+- name: data_stream.dataset
+  type: constant_keyword
+
+- name: data_stream.namespace
+  type: constant_keyword
+
+- name: '@timestamp'
+  type: date
+
+- name: libvirt
+  type: group
+  fields:
+    - name: vm
+      type: group
+      fields:
+        - name: name
+          type: keyword
+          dimension: true
+        - name: uuid
+          type: keyword
+          dimension: true
+        - name: state
+          type: keyword
+        - name: vcpu
+          type: long
+        - name: memory
+          type: group
+          fields:
+            - name: kb
+              type: long

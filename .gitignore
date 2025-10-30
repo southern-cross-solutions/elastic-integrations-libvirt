@@ -2,3 +2,4 @@ temp/
 venv/
 bin/
 build/
+.old/

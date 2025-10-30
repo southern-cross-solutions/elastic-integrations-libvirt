@@ -1,15 +1,30 @@
-{
-    "@timestamp":"2025-10-22T08:08:46.67155337Z",
-    "ecs":{
-        "version":"8.11.0"
-    },
-    "agent":{},
-    "libvirt":{
-        "domain":{
-            "name":"test-domain-B",
-            "uuid":"9df70c6766494ae8a943d7c68df42787",
-            "state":"shutoff",
-            "id":4294967295
+[
+  {
+    "@timestamp": "2025-10-29T12:21:28Z",
+    "libvirt": {
+      "vm": {
+        "uuid": "9df70c67-6649-4ae8-a943-d7c68df42787",
+        "name": "test-domain-B",
+        "state": "shutoff",
+        "vcpu": 1,
+        "memory": {
+          "kb": 524288
         }
+      }
     }
-}
+  },
+  {
+    "@timestamp": "2025-10-29T12:21:28Z",
+    "libvirt": {
+      "vm": {
+        "uuid": "34a9e245-5b19-4f32-855c-9362e7716896",
+        "name": "test-domain-A",
+        "state": "shutoff",
+        "vcpu": 1,
+        "memory": {
+          "kb": 1048576
+        }
+      }
+    }
+  }
+]

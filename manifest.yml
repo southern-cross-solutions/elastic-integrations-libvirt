@@ -1,7 +1,7 @@
 format_version: 3.5.0
 name: libvirt
 title: "Libvirt/KVM"
-version: 0.0.1
+version: 0.3.0
 source:
   license: "Elastic-2.0"
 description: "Collects Libvirt/KVM hypervisor state metrics (VM counts and states)."
@@ -19,17 +19,39 @@ icons:
     title: Libvirt logo
     size: 32x32
     type: image/svg+xml
-vars:
-  - name: libvirt.uri
-    default: "qemu:///system"
-    description: "Libvirt connection URI (e.g., qemu:///system or qemu+tcp://host/system)"
-    type: text
-    required: true
-# screenshots:
-#   - src: /img/sample-screenshot.png
-#     title: Sample screenshot
-#     size: 600x600
-#     type: image/png
+screenshots:
+  - src: /img/libvirt-logo.svg
+    # - src: /img/sample-screenshot.png
+    title: Sample screenshot
+    size: 600x600
+    type: image/svg+xml
+    # type: image/png
 owner:
   github: southern-cross-solutions
   type: community
+
+policy_templates:
+  - name: libvirt_metrics
+    title: Libvirt VM Metrics
+    description: Poll the Libvirt metrics API endpoint at intervals and ingest JSON results.
+    inputs:
+      - type: httpjson
+        title: Libvirt metrics polling input
+        description: Polls the libvirt-exporter API and ingests JSON output
+        vars:
+          - name: host
+            type: text
+            title: API Host
+            default: "localhost"
+          - name: port
+            type: text
+            title: API Port
+            default: "8088"
+          - name: path
+            type: text
+            title: API Endpoint Path
+            default: "/v1/domains"
+          - name: interval
+            type: text
+            title: Polling Interval
+            default: "10s"

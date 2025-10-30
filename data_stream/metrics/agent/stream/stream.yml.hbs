@@ -1,0 +1,16 @@
+type: httpjson
+schedule: "{{interval}}"
+request.url: "http://{{host}}:{{port}}{{path}}"
+
+{{!-- response.decode_json: true
+
+response.split:
+  target: ""
+  keep_parent: false
+
+keep_null: true
+
+data_stream:
+  type: metrics
+  dataset: libvirt.metrics
+  namespace: default --}}
