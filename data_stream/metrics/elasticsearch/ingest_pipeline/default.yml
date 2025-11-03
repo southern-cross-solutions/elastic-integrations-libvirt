@@ -26,6 +26,7 @@ processors:
   # Remove leftover fields that cause clutter or conflicts
   - remove:
       field:
+        - "message"
         - "event.original"
         - "http"
         - "url"
