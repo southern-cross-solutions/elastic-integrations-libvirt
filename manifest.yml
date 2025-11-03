@@ -39,6 +39,13 @@ policy_templates:
         title: State Polling REST Endpoint
         description: Polls the libvirt-exporter API and ingests JSON output
         vars:
+          - name: interval
+            type: text
+            title: Polling Interval
+            default: "10s"
+            required: true
+            multi: false
+            show_user: true
           - name: api_endpoint
             type: text
             title: API Endpoint
