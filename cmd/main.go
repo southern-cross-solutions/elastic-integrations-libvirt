@@ -1,3 +1,4 @@
+// // API CALL WITH LIST OF VMS
 // package main
 
 // import (
@@ -106,16 +107,15 @@
 // 		json.NewEncoder(w).Encode(events)
 // 	})
 
-// 	log.Println("Serving JSON Elastic Agent endpoint on http://0.0.0.0:8088/v1/domains")
-// 	log.Fatal(http.ListenAndServe(":8088", nil))
+// 	log.Println("Serving JSON Elastic Agent endpoint on http://127.0.0.1:8088/v1/domains")
+// 	log.Fatal(http.ListenAndServe("127.0.0.1:8088", nil))
 // }
 
 
 
 
 
-
-
+// API CALL WITH COUNT OF STATES
 package main
 
 import (
@@ -217,6 +217,6 @@ func main() {
 		json.NewEncoder(w).Encode(summary)
 	})
 
-	log.Println("Serving JSON Elastic Agent endpoint on http://0.0.0.0:8088/v1/domains")
-	log.Fatal(http.ListenAndServe(":8088", nil))
+	log.Println("Serving JSON Elastic Agent endpoint on http://127.0.0.1:8088/v1/domains")
+	log.Fatal(http.ListenAndServe("127.0.0.1:8088", nil))
 }

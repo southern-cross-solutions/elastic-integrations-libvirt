@@ -49,7 +49,7 @@ policy_templates:
           - name: api_endpoint
             type: text
             title: API Endpoint
-            default: "http://localhost:8088/v1/domains"
+            default: "http://127.0.0.1:8088/v1/domains"
             required: true
             multi: false
             show_user: true
