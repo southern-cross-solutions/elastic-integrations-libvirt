@@ -39,31 +39,10 @@ policy_templates:
         title: State Polling REST Endpoint
         description: Polls the libvirt-exporter API and ingests JSON output
         vars:
-          - name: host
+          - name: api_endpoint
             type: text
-            title: API Host
-            default: "localhost"
-            required: true
-            multi: false
-            show_user: true
-          - name: port
-            type: text
-            title: API Port
-            default: "8088"
-            required: true
-            multi: false
-            show_user: true
-          - name: path
-            type: text
-            title: API Endpoint Path
-            default: "/v1/domains"
-            required: true
-            multi: false
-            show_user: true
-          - name: interval
-            type: text
-            title: Polling Interval
-            default: "10s"
+            title: API Endpoint
+            default: "http://localhost:8088/v1/domains"
             required: true
             multi: false
             show_user: true
