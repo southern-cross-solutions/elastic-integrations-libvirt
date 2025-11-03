@@ -13,19 +13,14 @@ processors:
       value: "metric"
 
 
-
+  - set:
+      field: dimension
+      value: "time_series"
   # Parse the JSON string in the 'message' field into real fields 
   - json:
       field: message
-      target_field: libvirt
-      add_to_root: false
+      add_to_root: true
       ignore_failure: true
-
-  # Remove old message string
-  # - remove:
-  #     field: message
-  #     ignore_missing: true
-
 
 
   # Remove leftover fields that cause clutter or conflicts

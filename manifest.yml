@@ -1,7 +1,7 @@
 format_version: 3.5.0
 name: libvirt
 title: "Libvirt/KVM"
-version: 0.3.38
+version: 0.4.0
 source:
   license: "Elastic-2.0"
 description: "Collects Libvirt/KVM hypervisor state metrics (VM counts and states)."
