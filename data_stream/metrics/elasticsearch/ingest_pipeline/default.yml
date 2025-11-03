@@ -1,0 +1,47 @@
+---
+description: "Ingest pipeline for Libvirt hypervisor metrics (single document ingestion)"
+processors:
+  # Set required ECS/data stream metadata
+  - set:
+      field: "event.dataset"
+      value: "libvirt.metrics"
+  - set:
+      field: "event.module"
+      value: "libvirt"
+  - set:
+      field: "event.kind"
+      value: "metric"
+
+
+
+  # Parse the JSON string in the 'message' field into real fields 
+  - json:
+      field: message
+      target_field: libvirt
+      add_to_root: false
+      ignore_failure: true
+
+  # Remove old message string
+  # - remove:
+  #     field: message
+  #     ignore_missing: true
+
+
+
+  # Remove leftover fields that cause clutter or conflicts
+  - remove:
+      field:
+        - "event.original"
+        - "http"
+        - "url"
+        - "body"
+      ignore_missing: true
+
+
+on_failure:
+  - set:
+      field: "error.message"
+      value: "Ingest pipeline failed: {{{ _ingest.on_failure_message }}}"
+  - set:
+      field: "event.kind"
+      value: "pipeline_error"

@@ -1,33 +1,42 @@
 - name: data_stream.type
   type: constant_keyword
-
 - name: data_stream.dataset
   type: constant_keyword
-
 - name: data_stream.namespace
   type: constant_keyword
-
 - name: '@timestamp'
   type: date
 
+# Metadata fields for setting static ECS values (kept at the root)
+- name: event.kind
+  type: constant_keyword
+- name: event.module
+  type: constant_keyword
+- name: event.dataset
+  type: constant_keyword
+
+# libvirt.data field structure
 - name: libvirt
   type: group
   fields:
-    - name: vm
+    - name: data
       type: group
       fields:
-        - name: name
-          type: keyword
-          dimension: true
-        - name: uuid
-          type: keyword
-          dimension: true
-        - name: state
-          type: keyword
-        - name: vcpu
-          type: long
-        - name: memory
+        - name: vm
           type: group
           fields:
-            - name: kb
+            - name: name
+              type: keyword
+              dimension: true
+            - name: uuid
+              type: keyword
+              dimension: true
+            - name: state
+              type: keyword
+            - name: vcpu
               type: long
+            - name: memory
+              type: group
+              fields:
+                - name: kb
+                  type: long
