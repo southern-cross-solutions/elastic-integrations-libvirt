@@ -12,16 +12,16 @@ processors:
       field: "event.kind"
       value: "metric"
 
-
+  # Set a default dimension for time series data
   - set:
       field: dimension
       value: "time_series"
+
   # Parse the JSON string in the 'message' field into real fields 
   - json:
       field: message
       add_to_root: true
       ignore_failure: true
-
 
   # Remove leftover fields that cause clutter or conflicts
   - remove:
@@ -33,7 +33,7 @@ processors:
         - "body"
       ignore_missing: true
 
-
+# On pipeline failure set a error.message field
 on_failure:
   - set:
       field: "error.message"

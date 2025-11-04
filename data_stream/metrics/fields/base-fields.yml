@@ -40,6 +40,8 @@
 #               fields:
 #                 - name: kb
 #                   type: long
+
+# libvirt.[state] field structure
 - name: dimension
   type: keyword
   dimension: true

@@ -150,7 +150,6 @@ func getDomains() ([]DomainInfo, error) {
 	}
 
 	var result []DomainInfo
-	log.Printf("Scraped %d VMs\n", len(domains))
 	for _, dom := range domains {
 		name, _ := dom.GetName()
 		uuid, _ := dom.GetUUIDString()
@@ -205,7 +204,7 @@ func summarizeDomains(domains []DomainInfo) LibvirtSummary {
 }
 
 func main() {
-	http.HandleFunc("/v1/domains", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/v1/states", func(w http.ResponseWriter, r *http.Request) {
 		domains, err := getDomains()
 		if err != nil {
 			http.Error(w, err.Error(), 500)
@@ -217,6 +216,6 @@ func main() {
 		json.NewEncoder(w).Encode(summary)
 	})
 
-	log.Println("Serving JSON Elastic Agent endpoint on http://127.0.0.1:8088/v1/domains")
+	log.Println("Serving JSON Elastic Agent endpoint on http://127.0.0.1:8088/v1/states")
 	log.Fatal(http.ListenAndServe("127.0.0.1:8088", nil))
 }

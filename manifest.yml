@@ -16,16 +16,14 @@ conditions:
     subscription: "basic"
 icons:
   - src: /img/libvirt-logo.svg
-    title: Libvirt logo
+    title: Libvirt Logo
     size: 32x32
     type: image/svg+xml
 screenshots:
   - src: /img/libvirt-logo.svg
-    # - src: /img/sample-screenshot.png
-    title: Sample screenshot
+    title: Libvirt Logo
     size: 600x600
     type: image/svg+xml
-    # type: image/png
 owner:
   github: southern-cross-solutions
   type: community
@@ -49,7 +47,7 @@ policy_templates:
           - name: api_endpoint
             type: text
             title: API Endpoint
-            default: "http://127.0.0.1:8088/v1/domains"
+            default: "http://127.0.0.1:8088/v1/states"
             required: true
             multi: false
             show_user: true
