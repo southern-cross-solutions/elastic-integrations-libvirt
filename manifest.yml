@@ -1,7 +1,7 @@
 format_version: 3.5.0
 name: libvirt
 title: "Libvirt/KVM"
-version: 0.4.0
+version: 0.5.0
 source:
   license: "Elastic-2.0"
 description: "Collects Libvirt/KVM hypervisor state metrics (VM counts and states)."
@@ -36,13 +36,13 @@ policy_templates:
     description: Poll the Libvirt metrics API endpoint at intervals and ingest JSON results.
     inputs:
       - type: httpjson
-        title: State Polling REST Endpoint
+        title: VM State Exporter Endpoint Configuration
         description: Polls the libvirt-exporter API and ingests JSON output
         vars:
           - name: interval
             type: text
             title: Polling Interval
-            default: "10s"
+            default: "1m"
             required: true
             multi: false
             show_user: true
