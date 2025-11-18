@@ -1,0 +1,12 @@
+title: KVM status metrics
+type: metrics
+dataset: libvirt.status
+
+streams:
+  - input: kvm/metrics
+    title: KVM Status Metrics
+    description: Collect KVM Status Metrics
+    enabled: true
+
+elasticsearch:
+  index_mode: time_series

@@ -1,0 +1,43 @@
+- name: data_stream.type
+  type: constant_keyword
+  description: Data stream type.
+
+- name: data_stream.dataset
+  type: constant_keyword
+  description: Data stream dataset.
+
+- name: data_stream.namespace
+  type: constant_keyword
+  description: Data stream namespace.
+
+- name: event.module
+  type: constant_keyword
+  description: Event module
+  value: libvirt
+
+- name: event.dataset
+  type: constant_keyword
+  description: Event dataset
+  value: libvirt.status
+
+- name: '@timestamp'
+  type: date
+  description: Event timestamp.
+
+
+- name: kvm
+  type: group
+  fields:
+    - name: id
+      type: long
+      description: KVM ID
+    - name: name
+      type: keyword
+      description: KVM Name
+      dimension: true
+    - name: status
+      type: group
+      fields:
+        - name: state
+          type: keyword
+          description: VM State

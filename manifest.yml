@@ -1,9 +1,9 @@
 format_version: 3.5.0
 name: libvirt
 title: "Libvirt/KVM"
-version: 0.5.0
-source:
-  license: "Elastic-2.0"
+version: 0.6.1
+# source:
+#   license: "Elastic-2.0"
 description: "Collects Libvirt/KVM hypervisor state metrics (VM counts and states)."
 type: integration
 categories:
@@ -14,40 +14,41 @@ conditions:
     version: "^8.17.0"
   elastic:
     subscription: "basic"
-icons:
-  - src: /img/libvirt-logo.svg
-    title: Libvirt Logo
-    size: 32x32
-    type: image/svg+xml
 screenshots:
   - src: /img/libvirt-logo.svg
     title: Libvirt Logo
     size: 600x600
+    type: image/svg+xml
+icons:
+  - src: /img/libvirt-logo.svg
+    title: Libvirt Logo
+    size: 32x32
     type: image/svg+xml
 owner:
   github: southern-cross-solutions
   type: community
 
 policy_templates:
-  - name: libvirt_metrics
+  - name: kvm
     title: Libvirt VM Metrics
-    description: Poll the Libvirt metrics API endpoint at intervals and ingest JSON results.
+    description: Collect the state metrics from Libvirt/KVM hypervisors.
     inputs:
-      - type: httpjson
-        title: VM State Exporter Endpoint Configuration
-        description: Polls the libvirt-exporter API and ingests JSON output
+      - type: kvm/metrics
+        title: Collect the state metrics from Libvirt/KVM hypervisors.
+        description: Collect the state metrics from Libvirt/KVM hypervisors.
         vars:
-          - name: interval
+          - name: hosts
             type: text
-            title: Polling Interval
-            default: "1m"
+            title: KVM Connection String.
+            multi: true
             required: true
-            multi: false
             show_user: true
-          - name: api_endpoint
+            default:
+              # - unix:///var/run/libvirt/libvirt-sock
+              - qemu:///system
+          - name: period
             type: text
-            title: API Endpoint
-            default: "http://127.0.0.1:8088/v1/states"
+            title: Period
             required: true
-            multi: false
-            show_user: true
+            default:
+              - 10s
